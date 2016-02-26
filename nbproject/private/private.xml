@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_mute.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_requesthelp.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_admins.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/plugin.yml</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_apply.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_banip.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/ConfigEntries.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_ban.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/title/TitleManager.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/util/Service.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_notesforstaff.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/config.yml</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/Utils.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_kick.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/Reports.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/util/Util.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_information.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/util/AbstractService.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/banning/BanManager.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_warn.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/listener/UtilsListener.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_announce.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_title.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/command/Command_report.java</file>
+            <file>file:/C:/Users/Joe/Documents/NetBeansProjects/Utils/src/me/adaptified/utils/banning/Ban.java</file>
+        </group>
+    </open-files>
+</project-private>
