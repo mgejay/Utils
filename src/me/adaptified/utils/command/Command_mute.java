@@ -20,10 +20,6 @@ public class Command_mute extends BukkitCommand<Utils> {
 
         Player player = getPlayer(args[0]);
 
-        String reason = null;
-        if (args.length >= 1) {
-            reason = StringUtils.join(ArrayUtils.subarray(args, 1, args.length), " ");
-        }
 
         if (!muted.contains(player.getName())) {
 
