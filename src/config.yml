@@ -20,6 +20,7 @@ server:
   
   # The list of words for your filter.
 censored_words:
+  - f
   - fuck
   - shit
   - cock
