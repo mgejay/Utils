@@ -13,22 +13,12 @@ commands:
         usage: /<command>
         description: the forums link
         aliases: []
-        permission: utils.forums 
-    announce:
-        usage: /<command> <message> [silent]
-        description: Announce a message, add silent to hide your name.
-        aliases: ann
-        permission: utils.announce    
+        permission: utils.forums    
     notesforstaff:
         usage: /<command>
         description: Notes that might help the staff get the plugin working on their side.
         aliases: []
         permission: utils.notesforstaff
-    admins:
-        usage: /<command>
-        description: Find the server's admins
-        aliases: administrators
-        permission: utils.admins
     ban:
         usage: /<command> [-o] <player> <reason>
         description: Bans a player
@@ -43,17 +33,32 @@ commands:
         usage: /<command> <player> 
         description: Mute a player
         aliases: utilsmute
-        permission: utils.mute   
+        permission: utils.mute 
+    unmute:
+        usage: /<command> <player> 
+        description: Unmute a player
+        aliases: utilsunmute
+        permission: utils.unmute       
     banip:
         usage: /<command> <<player> | <ip>> <reason>
         description: Bans a player IP
         aliases: utilsbanip
         permission: utils.banip
+    unbanip:
+        usage: /<command> <ip>
+        description: Unbans an IP
+        aliases: utilsunbanip
+        permission: utils.unbanip    
     unban:
         usage: /<command> <player>
         description: Unbans a player
         aliases: utilsunban
         permission: utils.unban
+    staffchat:
+        usage: /<command> <message>
+        description: Staffchat
+        aliases: sc
+        permission: utils.staffchat    
     apply:
         usage: /<command>
         description: info on how to apply

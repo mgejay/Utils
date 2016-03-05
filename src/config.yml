@@ -8,9 +8,15 @@ server:
 
   # This server's owner.
   owner: Someone
-
+  
+  # This server's forum.
+  forum: http://somethingelse.net
+  
   # This server's website.
   website: http://something.com
+  
+  #
+  canapply: yes
   
   # Prefix for various things, color codes supported.
   prefix: [Default]
@@ -18,24 +24,21 @@ server:
   # The filter for censoring certain words. [on/off]
   filter: on
   
-  # The list of words for your filter.
+  # The list of words for your filter. To block a word if it is alone
 censored_words:
-  - f
   - fuck
   - shit
   - cock
   - dick
-  - ass
+  - \bas(s+)\b
   - pussy
   - penis
   - fuk
   - fuc
   - bitch
-  - fucker
   - titties
-  - tits
-  - titts
-  
+  - tit
+
 
 banning:
 

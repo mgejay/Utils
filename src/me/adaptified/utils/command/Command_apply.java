@@ -14,14 +14,14 @@ public class Command_apply extends BukkitCommand<Utils> {
 
     @Override
     public boolean run(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        final String canapply = Utils.plugin.config.getString("canapply");
+        final String canapply = plugin.getConfig().getString("server.canapply");
 
         if (canapply.equalsIgnoreCase("no")) {
             sender.sendMessage(ChatColor.RED + "I apologize, it seems that this server has applying disabled!");
+        } else {
+            sender.sendMessage(ChatColor.RED + "So, you wan't to be a staff member, ayy?");
+            sender.sendMessage(ChatColor.RED + "Read more information at " + plugin.getConfig().getString("server.forum") + ".");
         }
-
-        sender.sendMessage(ChatColor.RED + "So, you wan't to be a staff member, ayy?");
-        sender.sendMessage(ChatColor.RED + "Read more information at " + plugin.getConfig().getString("website") + ".");
         return true;
     }
 

@@ -24,7 +24,7 @@ public class Ban implements ConfigLoadable, ConfigSaveable, Validatable {
     @Getter
     private final String id;
     //
-    private final List<String> ips;
+    private List<String> ips;
     @Getter
     @Setter
     private UUID uuid = null;

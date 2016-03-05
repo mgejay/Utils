@@ -17,7 +17,7 @@ public class Command_warn extends BukkitCommand<Utils> {
 
     @Override
     public boolean run(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        if (args.length < 3) {
+        if (args.length < 1) {
             return showUsage();
         }
 

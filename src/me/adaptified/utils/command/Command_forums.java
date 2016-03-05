@@ -13,7 +13,7 @@ public class Command_forums extends BukkitCommand<Utils> {
 
     @Override
     public boolean run(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        sender.sendMessage(ChatColor.GREEN + "http://thefoundationmc.boards.net");
+        sender.sendMessage(ChatColor.GREEN + plugin.getConfig().getString("forums"));
         return true;
     }
 

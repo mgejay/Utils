@@ -1,10 +1,7 @@
 package me.adaptified.utils.listener;
 
-import java.util.List;
-import me.adaptified.utils.Utils;
-import me.adaptified.utils.command.Command_mute;
+import static me.adaptified.utils.Utils.plugin;
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -12,8 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-public class UtilsListener
-        implements Listener {
+public class UtilsListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onBlockPlace(BlockPlaceEvent event) {
@@ -42,21 +38,15 @@ public class UtilsListener
     @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        String message = event.getMessage();
-        String[] arrayOfString;
-        int j = (arrayOfString = event.getMessage().split(" ")).length;
-        for (int i = 0; i < j; i++) {
-            String word = arrayOfString[i];
-            if (Utils.plugin.getConfig().getStringList("censored_words").contains(word)) {
-                event.setCancelled(true);
+        String message = event.getMessage().trim();
 
-                event.getPlayer().sendMessage(ChatColor.RED + "The word " + word + " is not allowed here!");
-            }
+        if (plugin.MutedPlayers.contains(player)) {
+            player.sendMessage(ChatColor.RED + "You are muted! You cannot speak!");
+            event.setCancelled(true);
         }
 
-        if (Command_mute.muted.contains(player.getName())) {
-            event.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "You are muted, you cannot speak!");
+        if (!plugin.MutedPlayers.contains(player)) {
+            event.setCancelled(false);
         }
 
         if (message.length() >= 6) {

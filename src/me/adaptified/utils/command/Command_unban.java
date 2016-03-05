@@ -1,11 +1,13 @@
 package me.adaptified.utils.command;
 
+import java.util.UUID;
 import me.adaptified.utils.Utils;
 import me.adaptified.utils.util.Util;
 import net.md_5.bungee.api.ChatColor;
 import net.pravian.bukkitlib.command.BukkitCommand;
 import net.pravian.bukkitlib.command.CommandPermissions;
 import net.pravian.bukkitlib.command.SourceType;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
@@ -18,16 +20,18 @@ public class Command_unban extends BukkitCommand<Utils> {
             return showUsage();
         }
 
-        final String id = args[0];
+        final OfflinePlayer player = getOfflinePlayer(args[0]);
+        final UUID UUID = player.getUniqueId();
 
-        if (!plugin.bm.isIdBanned(id)) {
-            msg(ChatColor.RED + "Could not find ban: " + id);
+        if (!plugin.bm.isIdBanned(player.getName())) {
+            msg(ChatColor.RED + "Could not find ban: " + player.getName());
             return true;
         }
 
-        Util.adminMessage(sender, "Unbanning player " + id, true);
+        Util.adminMessage(sender, "Unbanning player " + player.getName(), true);
 
-        plugin.bm.unbanId(id);
+        plugin.bm.unbanId(player.getName());
+        plugin.bm.unban(UUID);
 
         msg(ChatColor.GRAY + "Unbanned player.");
 
