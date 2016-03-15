@@ -13,9 +13,6 @@ public class StaffChatListen {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player.hasPermission("utils.staffchat.see")) {
                 player.sendMessage(ChatColor.RED + "[" + ChatColor.WHITE + "Staff Chat" + ChatColor.RED + "] " + ChatColor.WHITE + name + ": " + ChatColor.RED + message);
-                return;
-            } else {
-                return;
             }
         }
     }
