@@ -15,14 +15,14 @@ server:
   # This server's website.
   website: http://something.com
   
-  # If the /apply command gives information [yes/no]
-  canapply: yes
+  # If the /apply command gives information [true/false]
+  canapply: true
   
   # Disabling broadcasting of punishment commands [true/false] 
   disablepunishbroadcasts: true
   
-  # The filter for censoring certain words. [on/off]
-  filter: on
+  # The filter for censoring certain words. [true/false]
+  filter: true
   
   # The list of words for your filter. To block a word if it is alone
 censored_words:
@@ -46,4 +46,4 @@ banning:
   appeal_url: none
 
 
-admins: [Someone]
+admins: []
