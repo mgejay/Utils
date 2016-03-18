@@ -21,7 +21,7 @@ public class Command_teleport extends SimpleCommand<Utils> {
         }
 
         if (args.length == 0) {
-            sender.sendMessage(ChatColor.RED + "Please provide a player!");
+            sender.sendMessage(ChatColor.RED + "Please provide a valid player!");
             return true;
         }
 
