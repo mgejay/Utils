@@ -1,6 +1,6 @@
 package me.adaptified.utils.util;
 
-import java.util.logging.Logger;
+import net.pravian.aero.util.Loggers;
 
 public interface Service {
 
@@ -8,6 +8,6 @@ public interface Service {
 
     public void stop();
 
-    public Logger getLogger();
+    public Loggers getLogger();
 
 }

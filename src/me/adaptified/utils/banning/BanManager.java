@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import net.pravian.bukkitlib.config.YamlConfig;
-import net.pravian.bukkitlib.util.FileUtils;
+import net.pravian.aero.config.YamlConfig;
+import net.pravian.aero.util.Plugins;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -27,7 +27,7 @@ public class BanManager extends AbstractService {
     public BanManager(Utils plugin) {
         super(plugin);
 
-        this.config = new YamlConfig(plugin, FileUtils.getPluginFile(plugin, "bans.yml"), false);
+        this.config = new YamlConfig(plugin, Plugins.getPluginFile(plugin, "bans.yml"), false);
         this.rawBans = new HashSet<>();
         this.uuidBans = new HashMap<>();
         this.ipBans = new HashMap<>();

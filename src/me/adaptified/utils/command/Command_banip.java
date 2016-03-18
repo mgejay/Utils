@@ -1,38 +1,42 @@
 package me.adaptified.utils.command;
 
-import com.google.common.base.Strings;
 import me.adaptified.utils.Utils;
 import me.adaptified.utils.banning.Ban;
 import me.adaptified.utils.banning.BanType;
 import me.adaptified.utils.util.Util;
-import net.pravian.bukkitlib.command.BukkitCommand;
-import net.pravian.bukkitlib.command.CommandPermissions;
-import net.pravian.bukkitlib.command.SourceType;
-import net.pravian.bukkitlib.util.IpUtils;
+import net.pravian.aero.command.CommandOptions;
+import net.pravian.aero.command.SimpleCommand;
+import net.pravian.aero.command.SourceType;
+import net.pravian.aero.util.Ips;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandPermissions(source = SourceType.ANY, permission = "utils.banip")
-public class Command_banip extends BukkitCommand<Utils> {
+@CommandOptions(source = SourceType.PLAYER, permission = "utils.banip")
+public class Command_banip extends SimpleCommand<Utils> {
 
     @Override
-    protected boolean run(CommandSender sender, Command command, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length < 2) {
             return showUsage();
+        }
+
+        if (!sender.hasPermission("utils.banip")) {
+            sender.sendMessage(ChatColor.RED + "Utils -> No permission!");
+            return true;
         }
 
         String id = args[0];
         String ip = null;
 
-        if (IpUtils.isValidIp(args[0])) {
+        if (Ips.isValidIp(args[0])) {
             ip = args[0];
         } else {
             final Player player = getPlayer(args[0]);
             if (player != null) {
-                ip = IpUtils.getIp(player);
+                ip = Ips.getIp(player);
                 id = player.getName();
             }
         }
@@ -50,7 +54,11 @@ public class Command_banip extends BukkitCommand<Utils> {
 
         final String reason = StringUtils.join(args, " ", 1, args.length);
 
-        Util.adminMessage(sender, "Banning IP: " + ip + (ip.equals(id) ? "" : " (" + id + ")") + " for " + reason, true);
+        if (Utils.plugin.config.getBoolean("server.disablepunishbroadcasts")) {
+            logger.info("Not broadcasting message, disabled in config!");
+        } else {
+            Util.adminMessage(sender, "Banning IP: " + ip + (ip.equals(id) ? "" : " (" + id + ")") + " for " + reason, true);
+        }
 
         final Ban ban = new Ban(BanType.IP_BAN, id);
         ban.setReason(reason);
@@ -62,7 +70,7 @@ public class Command_banip extends BukkitCommand<Utils> {
         }
 
         for (Player player : server.getOnlinePlayers()) {
-            if (IpUtils.getIp(player).equals(ip)) {
+            if (Ips.getIp(player).equals(ip)) {
                 player.kickPlayer(ban.getKickMessage());
             }
         }

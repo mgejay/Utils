@@ -10,10 +10,10 @@ public class Reports {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player.hasPermission("utils.reports")) {
                 player.sendMessage(ChatColor.RED + "[Report Center] " + ChatColor.WHITE + reporter.getName() + " has reported " + reported.getName() + " for " + report);
-            }
 
-            if (player.hasPermission("utils.reports") && player == null) {
-                reporter.sendMessage(ChatColor.RED + "There are no staff online at the moment!");
+                if (player == null) {
+                    reporter.sendMessage(ChatColor.RED + "There are no staff online!");
+                }
             }
         }
     }

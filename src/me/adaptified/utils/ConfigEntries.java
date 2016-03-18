@@ -1,6 +1,6 @@
 package me.adaptified.utils;
 
-import net.pravian.bukkitlib.config.PathContainer;
+import net.pravian.aero.config.PathContainer;
 
 public enum ConfigEntries implements PathContainer {
 

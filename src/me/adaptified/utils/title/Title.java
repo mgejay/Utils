@@ -4,10 +4,10 @@ import me.adaptified.utils.util.ConfigLoadable;
 import me.adaptified.utils.util.ConfigSaveable;
 import me.adaptified.utils.util.Validatable;
 import java.util.UUID;
-import java.util.logging.Logger;
 import lombok.Getter;
 import lombok.Setter;
-import net.pravian.bukkitlib.util.ChatUtils;
+import net.pravian.aero.util.ChatUtils;
+import net.pravian.aero.util.Loggers;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 
@@ -15,7 +15,7 @@ public class Title implements ConfigLoadable, ConfigSaveable, Validatable {
 
     @Getter
     public final String id;
-    public final Logger logger;
+    public final Loggers logger;
     //
     @Getter
     @Setter

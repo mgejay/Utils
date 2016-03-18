@@ -15,11 +15,11 @@ server:
   # This server's website.
   website: http://something.com
   
-  #
+  # If the /apply command gives information [yes/no]
   canapply: yes
   
-  # Prefix for various things, color codes supported.
-  prefix: [Default]
+  # Disabling broadcasting of punishment commands [true/false] 
+  disablepunishbroadcasts: true
   
   # The filter for censoring certain words. [on/off]
   filter: on

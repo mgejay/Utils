@@ -1,8 +1,7 @@
 package me.adaptified.utils.util;
 
 import me.adaptified.utils.Utils;
-import java.util.logging.Logger;
-import net.pravian.bukkitlib.implementation.BukkitLogger;
+import net.pravian.aero.util.Loggers;
 import org.bukkit.Server;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -11,7 +10,7 @@ public abstract class AbstractService implements Service, Listener {
 
     protected final Utils plugin;
     protected final Server server;
-    protected final BukkitLogger logger;
+    protected final Loggers logger;
     //
     protected boolean started;
 
@@ -54,7 +53,7 @@ public abstract class AbstractService implements Service, Listener {
     }
 
     @Override
-    public Logger getLogger() {
+    public Loggers getLogger() {
         return logger;
     }
 

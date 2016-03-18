@@ -1,90 +1,26 @@
 name: Utils
-version: 2.0
+version: 1.0
+description: Revamp of Utils!
+loadbefore: [Essentials]
+authors: [Prozza, Adaptified]
+softdepend: [Aero]
 main: me.adaptified.utils.Utils
-description: Utility plugin!
-authors: [Adaptified, Prozza]
 commands:
-    information:
-        usage: /<command>
-        description: Info about the plugin and server
-        aliases: []
-        permission: utils.info
-    forums:
-        usage: /<command>
-        description: the forums link
-        aliases: []
-        permission: utils.forums    
-    notesforstaff:
-        usage: /<command>
-        description: Notes that might help the staff get the plugin working on their side.
-        aliases: []
-        permission: utils.notesforstaff
     ban:
-        usage: /<command> [-o] <player> <reason>
-        description: Bans a player
-        aliases: utilsban
-        permission: utils.ban
-    report:
-        usage: /<command> <player> [reason]
-        description: Report a player
-        aliases: utilsreport
-        permission: utils.report      
-    mute:
-        usage: /<command> <player> 
-        description: Mute a player
-        aliases: utilsmute
-        permission: utils.mute 
-    unmute:
-        usage: /<command> <player> 
-        description: Unmute a player
-        aliases: utilsunmute
-        permission: utils.unmute       
+        description: Ban a user
+        usage: /<command> [player] [reason]
     banip:
-        usage: /<command> <<player> | <ip>> <reason>
-        description: Bans a player IP
-        aliases: utilsbanip
-        permission: utils.banip
-    unbanip:
-        usage: /<command> <ip>
-        description: Unbans an IP
-        aliases: utilsunbanip
-        permission: utils.unbanip    
-    unban:
-        usage: /<command> <player>
-        description: Unbans a player
-        aliases: utilsunban
-        permission: utils.unban
-    staffchat:
-        usage: /<command> <message>
-        description: Staffchat
-        aliases: sc
-        permission: utils.staffchat    
-    apply:
-        usage: /<command>
-        description: info on how to apply
-        aliases: application
-        permission: utils.apply
-    requesthelp:
-        usage: /<command>
-        description: Request a staff member for help
-        aliases: ineedhelp
-        permission: utils.requesthelp
-    owner:
-        usage: /<command>
-        description: Find the server's owner
-        aliases: founder
-        permission: utils.owner
+        description: Ban an IP
+        usage: /<command> [IP] [reason]
     kick:
-        usage: /kick <player> <reason>
         description: Kick a player
-        aliases: utilskick
-        permission: utils.kick
-    warn:
-        usage: /warn <player> <reason>
-        description: Warn a player
-        aliases: []
-        permission: utils.warn
-    title:
-        usage: /title [player] <remove | set <full title>>
-
-
+        usage: /<command> [player] [reason]
+    mute:
+        description: Mute a player
+        usage: /<command> <player>
+    forums:
+        description: Get the server's forum link.
+        usage: /<command>
+        
+        
+        

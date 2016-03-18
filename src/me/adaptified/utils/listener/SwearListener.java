@@ -5,7 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import static me.adaptified.utils.Utils.plugin;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -21,20 +20,19 @@ public class SwearListener implements Listener {
         int j = (arrayOfString = event.getMessage().split(" ")).length;
         for (int i = 0; i < j; i++) {
             String word = arrayOfString[i];
-        if (plugin.getConfig().getString("server.filter").equals("true")) {
-            for (String regex : censored_words) {
-                Pattern pattern = Pattern.compile("(?i)" + regex);
-                Matcher matcher = pattern.matcher(event.getMessage());
-                if (matcher.find()) {
-                    event.setCancelled(true);
-                    event.getPlayer().sendMessage(ChatColor.RED + "That message contains a forbidden word!");
-                    return;
+            if (plugin.getConfig().getBoolean("server.filter")) {
+                for (String regex : censored_words) {
+                    Pattern pattern = Pattern.compile("(?i)" + regex);
+                    Matcher matcher = pattern.matcher(event.getMessage());
+                    if (matcher.find()) {
+                        event.setCancelled(true);
+                        event.getPlayer().sendMessage(ChatColor.RED + "That message contains a forbidden word!");
+                        return;
+                    }
                 }
+            } else {
+                return;
             }
-        }
-        }
-        if (plugin.getConfig().getString("server.filter").equals("false")) {
-            return;
         }
         //This would not only send a warning to the player, but also point out what word caused this event to occur - so if it was on accident, the player would know what he typed wrong.
     }

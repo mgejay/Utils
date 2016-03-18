@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
-import net.pravian.bukkitlib.util.TimeUtils;
+import net.pravian.aero.util.TimeUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 

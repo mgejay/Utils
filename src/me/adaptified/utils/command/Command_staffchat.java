@@ -2,22 +2,26 @@ package me.adaptified.utils.command;
 
 import me.adaptified.utils.StaffChatListen;
 import me.adaptified.utils.Utils;
-import net.pravian.bukkitlib.command.BukkitCommand;
-import net.pravian.bukkitlib.command.CommandPermissions;
-import net.pravian.bukkitlib.command.SourceType;
+import net.pravian.aero.command.CommandOptions;
+import net.pravian.aero.command.SimpleCommand;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-@CommandPermissions(source = SourceType.PLAYER, permission = "utils.staffchat")
-public class Command_staffchat extends BukkitCommand<Utils> {
+@CommandOptions(source = net.pravian.aero.command.SourceType.PLAYER, permission = "utils.staffchat", aliases = "sc")
+public class Command_staffchat extends SimpleCommand<Utils> {
 
     @Override
-    public boolean run(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (args.length == 0) {
             sender.sendMessage(ChatColor.RED + "Please provide a message!");
+            return true;
+        }
+
+        if (!sender.hasPermission("utils.staffchat")) {
+            sender.sendMessage(ChatColor.RED + "Utils -> No permission!");
             return true;
         }
 

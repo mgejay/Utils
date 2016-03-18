@@ -1,19 +1,25 @@
 package me.adaptified.utils.command;
 
 import me.adaptified.utils.Utils;
-import net.pravian.bukkitlib.command.BukkitCommand;
-import net.pravian.bukkitlib.command.CommandPermissions;
-import net.pravian.bukkitlib.command.SourceType;
+import net.pravian.aero.command.CommandOptions;
+import net.pravian.aero.command.SimpleCommand;
+import net.pravian.aero.command.SourceType;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-@CommandPermissions(source = SourceType.ANY, permission = "utils.forums")
-public class Command_forums extends BukkitCommand<Utils> {
+@CommandOptions(source = SourceType.PLAYER, permission = "utils.forums")
+public class Command_forums extends SimpleCommand<Utils> {
 
     @Override
-    public boolean run(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        sender.sendMessage(ChatColor.GREEN + plugin.getConfig().getString("forums"));
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        if (!sender.hasPermission("utils.forums")) {
+            sender.sendMessage(ChatColor.RED + "Utils -> No permission!");
+            return true;
+        }
+
+        sender.sendMessage(ChatColor.GREEN + plugin.config.getString("server.forum"));
         return true;
     }
 

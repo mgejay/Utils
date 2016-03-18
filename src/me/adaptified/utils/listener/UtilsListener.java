@@ -1,6 +1,7 @@
 package me.adaptified.utils.listener;
 
 import static me.adaptified.utils.Utils.plugin;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,6 +9,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 public class UtilsListener implements Listener {
 
@@ -17,21 +19,34 @@ public class UtilsListener implements Listener {
         switch (event.getBlockPlaced().getType()) {
             case TNT:
                 if (!player.hasPermission("utils.tnt")) {
-                    event.setCancelled(false);
-                } else {
                     player.sendMessage(ChatColor.RED + "I'm sorry, TNT is disabled for players without permission");
                     event.setCancelled(true);
+                } else {
+                    event.setCancelled(false);
                 }
             case STATIONARY_LAVA:
             case LAVA_BUCKET:
             case LAVA:
                 if (!player.hasPermission("utils.lava")) {
-                    event.setCancelled(false);
-                } else {
                     player.sendMessage(ChatColor.RED + "I'm sorry, This is disabled");
                     event.setCancelled(true);
+                } else {
+                    event.setCancelled(false);
                 }
                 break;
+        }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+
+        if (player.hasPlayedBefore()) {
+            player.sendMessage(ChatColor.BLUE + "Welcome back, " + player.getName() + "!");
+        }
+
+        if (!player.hasPlayedBefore()) {
+            Bukkit.broadcastMessage(ChatColor.BLUE + "Welcome to the server, " + player.getName() + "!");
         }
     }
 
@@ -40,12 +55,19 @@ public class UtilsListener implements Listener {
         Player player = event.getPlayer();
         String message = event.getMessage().trim();
 
-        if (plugin.MutedPlayers.contains(player)) {
-            player.sendMessage(ChatColor.RED + "You are muted! You cannot speak!");
+        if (plugin.mutedusers.contains(player.getName())) {
+
+            if (plugin.mutedusers.contains(player.getName() + ".reason")) {
+                player.sendMessage(ChatColor.RED + "You cannot speak, you were muted by " + plugin.mutedusers.getString(player.getName() + ".muted-by") + "\nReason: " + ChatColor.YELLOW + plugin.mutedusers.getString(player.getName() + ".reason"));
+            }
+            if (!plugin.mutedusers.contains(player.getName() + ".reason")) {
+                player.sendMessage(ChatColor.RED + "You cannot speak, you were muted by " + plugin.mutedusers.getString(player.getName() + ".muted-by"));
+            }
+
             event.setCancelled(true);
         }
 
-        if (!plugin.MutedPlayers.contains(player)) {
+        if (!plugin.mutedusers.contains(player.getName())) {
             event.setCancelled(false);
         }
 
@@ -56,7 +78,7 @@ public class UtilsListener implements Listener {
                     caps++;
                 }
             }
-            if (caps / message.length() > 0.65D) {
+            if (caps / message.length() > 0.65) {
                 player.sendMessage(ChatColor.RED + "Don't use so many caps!");
                 message = message.toLowerCase();
             }

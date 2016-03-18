@@ -4,20 +4,25 @@ import java.util.UUID;
 import me.adaptified.utils.Utils;
 import me.adaptified.utils.util.Util;
 import net.md_5.bungee.api.ChatColor;
-import net.pravian.bukkitlib.command.BukkitCommand;
-import net.pravian.bukkitlib.command.CommandPermissions;
-import net.pravian.bukkitlib.command.SourceType;
+import net.pravian.aero.command.CommandOptions;
+import net.pravian.aero.command.SimpleCommand;
+import net.pravian.aero.command.SourceType;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-@CommandPermissions(source = SourceType.ANY, permission = "utils.unban")
-public class Command_unban extends BukkitCommand<Utils> {
+@CommandOptions(source = SourceType.PLAYER, permission = "utils.unban")
+public class Command_unban extends SimpleCommand<Utils> {
 
     @Override
-    protected boolean run(CommandSender sender, Command command, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length != 1) {
             return showUsage();
+        }
+
+        if (!sender.hasPermission("utils.unban")) {
+            sender.sendMessage(ChatColor.RED + "Utils -> No permission!");
+            return true;
         }
 
         final OfflinePlayer player = getOfflinePlayer(args[0]);
@@ -28,7 +33,11 @@ public class Command_unban extends BukkitCommand<Utils> {
             return true;
         }
 
-        Util.adminMessage(sender, "Unbanning player " + player.getName(), true);
+        if (Utils.plugin.config.getBoolean("server.disablepunishbroadcasts")) {
+            logger.info("Not broadcasting message, disabled in config!");
+        } else {
+            Util.adminMessage(sender, "Unbanning player " + player.getName(), true);
+        }
 
         plugin.bm.unbanId(player.getName());
         plugin.bm.unban(UUID);

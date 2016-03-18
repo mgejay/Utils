@@ -1,29 +1,36 @@
 package me.adaptified.utils.command;
 
 import me.adaptified.utils.Utils;
-import net.pravian.bukkitlib.command.BukkitCommand;
-import net.pravian.bukkitlib.command.CommandPermissions;
-import net.pravian.bukkitlib.command.SourceType;
-import org.bukkit.Bukkit;
+import net.pravian.aero.command.CommandOptions;
+import net.pravian.aero.command.SimpleCommand;
+import net.pravian.aero.command.SourceType;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandPermissions(source = SourceType.ANY, permission = "utils.teleport")
-public class Command_teleport extends BukkitCommand<Utils> {
+@CommandOptions(source = SourceType.PLAYER, permission = "utils.teleport", aliases = "tp")
+public class Command_teleport extends SimpleCommand<Utils> {
 
     @Override
-    public boolean run(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        Player player = Bukkit.getPlayer(args[0]);
-        Player teleporter = (Player) sender;
-        if (player == null) {
-            teleporter.sendMessage(ChatColor.RED + "That player is not online!");
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        if (!sender.hasPermission("utils.teleport")) {
+            sender.sendMessage(ChatColor.RED + "Utils -> No permission!");
             return true;
         }
 
-        if (args.length < 1) {
-            teleporter.sendMessage(ChatColor.RED + "Please provide a player!");
+        if (args.length == 0) {
+            sender.sendMessage(ChatColor.RED + "Please provide a player!");
+            return true;
+        }
+
+        Player teleporter = (Player) sender;
+
+        Player player = getPlayer(args[0]);
+
+        if (player == null) {
+            teleporter.sendMessage(ChatColor.RED + "Player not found!");
             return true;
         }
 

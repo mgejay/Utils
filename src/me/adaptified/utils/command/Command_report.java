@@ -2,9 +2,9 @@ package me.adaptified.utils.command;
 
 import me.adaptified.utils.Reports;
 import me.adaptified.utils.Utils;
-import net.pravian.bukkitlib.command.BukkitCommand;
-import net.pravian.bukkitlib.command.CommandPermissions;
-import net.pravian.bukkitlib.command.SourceType;
+import net.pravian.aero.command.CommandOptions;
+import net.pravian.aero.command.SimpleCommand;
+import net.pravian.aero.command.SourceType;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
@@ -12,27 +12,30 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandPermissions(source = SourceType.PLAYER, permission = "utils.report")
-public class Command_report extends BukkitCommand<Utils> {
+@CommandOptions(source = SourceType.PLAYER, permission = "utils.report", aliases = "modreq")
+public class Command_report extends SimpleCommand<Utils> {
 
     @Override
-    public boolean run(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length < 2) {
-            return false;
+            sender.sendMessage(ChatColor.RED + "/report <player> <reason>\nBe sure to provide some detail and if there are no staff online, use the forums!");
+        }
+
+        if (!sender.hasPermission("utils.report")) {
+            sender.sendMessage(ChatColor.RED + "Utils -> No permission!");
+            return true;
         }
 
         Player player = getPlayer(args[0]);
 
         if (player == null) {
-            sender.sendMessage(ChatColor.RED + "That player does not exist!");
+            sender.sendMessage(ChatColor.RED + "Can't find player!");
             return true;
         }
 
         if (sender instanceof Player) {
-            if (player.equals(sender)) {
-                sender.sendMessage(ChatColor.RED + "Do not try to report yourself!");
-                return true;
-            }
+            sender.sendMessage(ChatColor.RED + "Do not try to report yourself!");
+            return true;
         }
 
         if (player.hasPermission("utils.noreport")) {
