@@ -26,6 +26,58 @@ server:
   
   # The list of words for your filter. To block a word if it is alone
 censored_words:
+  - anus
+  - arse
+  - arsehole
+  - dick
+  - \bas(s+)\b
+  - ass-hat
+  - ass-jabber
+  - ass-pirate
+  - assbag
+  - assbandit
+  - assbanger
+  - assbite
+  - assclown
+  - asscock
+  - asscracker
+  - assfuck
+  - assfucker
+  - assgoblin
+  - asshat
+  - asshole
+  - asshopper
+  - assjacker
+  - asslick
+  - asslicker
+  - assmonkey
+  - assmunch
+  - assmuncher
+  - assnigger
+  - asspirate
+  - assshit
+  - assshole
+  - asssucker
+  - asswad
+  - asswipe
+  - axwound
+  - bampot
+  - bastard
+  - beaner
+  - bitch
+  - bitchass
+  - bitches
+  - bitchtits
+  - bitchy
+  - blowjob
+  - bollocks
+  - bollox
+  - boner
+  - brotherfucker
+  - bullshit
+  - bumblefuck
+  - buttfucka
+  - buttfucker
   - fuck
   - shit
   - cock
@@ -38,6 +90,7 @@ censored_words:
   - bitch
   - titties
   - tit
+
 
 
 banning:
