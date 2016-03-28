@@ -45,5 +45,3 @@ banning:
   # Ban appeal message. If your server doesn't support appeals, set to "none"
   appeal_url: none
 
-
-admins: []
