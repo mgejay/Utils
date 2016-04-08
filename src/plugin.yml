@@ -21,6 +21,7 @@ commands:
     forums:
         description: Get the server's forum link.
         usage: /<command>
-        
-        
-        
+    staff:
+        description: Lists the servers staff
+        usage: /<command>
+        aliases: admins
