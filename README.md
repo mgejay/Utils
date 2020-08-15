@@ -4,7 +4,7 @@ Plugin that manages a lot of key things on a server.
 
 # Developers
 
-- [Adaptified](http://github.com/Adaptified)
+- [vJay](http://github.com/vJayyy)
 - [Prozza](http://github.com/JeromSar)
 
 
