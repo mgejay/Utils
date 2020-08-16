@@ -44,4 +44,15 @@ banning:
 
   # Ban appeal message. If your server doesn't support appeals, set to "none"
   appeal_url: none
-
+  
+# Rank System
+# If there are no players in a given rank put [] in the given area
+ranks:
+  jrmod:
+  moderators: []
+  headmod: []
+  jradmin: []
+  admins: []
+  headadmin:
+  builders: []
+  coowner: []
